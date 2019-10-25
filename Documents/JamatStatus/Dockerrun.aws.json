@@ -1,0 +1,13 @@
+{
+  "AWSEBDockerrunVersion": "1",
+  "Image": {
+    "Name": "hassanvk/jamatstatus",
+    "Update": "true"
+  },
+  "Ports": [
+    {
+      "ContainerPort": "4567"
+    }
+  ],
+  "Logging": "/var/log/nginx"
+}
