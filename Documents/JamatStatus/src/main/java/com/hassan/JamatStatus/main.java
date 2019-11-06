@@ -12,7 +12,7 @@ public class main {
     public static void main(String[] args){
 
 
-        Map<Integer,Person> dataMap = Database.getInstance();
+        Map<String,Person> dataMap = Database.getInstance();
         Gson gson = new Gson();
 
         get("/hello",(req,res) -> "Hello World");
@@ -20,7 +20,8 @@ public class main {
         get("/hello/:name", (request, response) -> "Hello: " + request.params(":name"));
 
         get("/updateStatus/:id/:password/:city/:state/:country/:transport",(request, response)->{
-            Person person = dataMap.get(Integer.valueOf(request.params(":id")));
+            //Person person = dataMap.get(Integer.valueOf(request.params(":id")));
+            Person person = dataMap.get((request.params(":id")));
             if(person.getPassword().equals(request.params(":password"))){
                 person.setCurrentCity(request.params(":city"));
                 person.setCurrentState(request.params(":state"));
@@ -35,15 +36,18 @@ public class main {
         get("/show/:id",(request, response) -> {
             if(request.params(":id").equalsIgnoreCase("all")){
                 StringBuilder sb = new StringBuilder();
-                for(Map.Entry<Integer,Person> entry : dataMap.entrySet()){
+                for(Map.Entry<String,Person> entry : dataMap.entrySet()){
                     Person person = entry.getValue();
                     sb.append(person.toString()).append("  *****  ");
                 }
                 response.body(sb.toString());
-                return sb;
+                //return sb;
+                return new Gson().toJson(dataMap);
             }
             else {
-                return dataMap.get(Integer.valueOf(request.params(":id"))).toString();
+                //return dataMap.get(Integer.valueOf(request.params(":id"))).toString();
+                return new Gson().toJson(dataMap.get((request.params(":id"))));
+
             }
         });
     }

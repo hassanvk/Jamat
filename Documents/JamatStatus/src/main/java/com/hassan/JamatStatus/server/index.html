@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+
+</form>
+
+<form action="/action.php" method="post">
+    ID Number:<br>
+    <input type="text" name="id" placeholder="Enter ID Number" >
+    <br>
+    Password:<br>
+    <input type="password" name="password" placeholder="Enter password" >
+    <br>
+    City:<br>
+    <input type="text" name="id" size="30" placeholder="Enter Current City">
+    <br>
+    State:<br>
+    <input type="text" name="id" size="30" placeholder="Enter Current State (or N/A)">
+    <br>
+    Country:<br>
+    <input type="text" name="id" size="30" placeholder="Enter Current Country">
+    <br>
+    Mode of Transport:<br>
+    <input type="text" name="id" size="30" placeholder="Enter mode of transport">
+    <br>
+    Notes:<br>
+    <input type="text" name="id" size="100" placeholder="Enter any Notes">
+    <br><br>
+    <input type="submit" value="Update Current Status">
+    <input type="reset">
+    <br><br>
+    Show status of ID Number or type All:<br>
+    <input type="submit" value="Show Status of" formaction="/action_show.php">
+    <input type="text" name="show" placeholder="ID Number or All">
+    <br>
+
+
+</form>
+<p id="demo"></p>
+
+<script>
+var txt = '{"A104":{"id":"A104","password":"password","name":"Ahmad Khan4","phoneNumber":"7737737733","currentCity":"Chicago","currentState":"IL","currentCountry":"USA","modeOfTransport":"Driving"},"A105":{"id":"A105","password":"password","name":"Ahmad Khan5","phoneNumber":"7737737733","currentCity":"Chicago","currentState":"IL","currentCountry":"USA","modeOfTransport":"Driving"},"A102":{"id":"A102","password":"password","name":"Ahmad Khan2","phoneNumber":"7737737733","currentCity":"Chicago","currentState":"IL","currentCountry":"USA","modeOfTransport":"Driving"},"A103":{"id":"A103","password":"password","name":"Ahmad Khan3","phoneNumber":"7737737733","currentCity":"Chicago","currentState":"IL","currentCountry":"USA","modeOfTransport":"Driving"},"A101":{"id":"A101","password":"password","name":"Ahmad Khan1","phoneNumber":"7737737733","currentCity":"Chicago","currentState":"IL","currentCountry":"USA","modeOfTransport":"Driving"}}'
+var obj = JSON.parse(txt);
+var text = "";
+Object.keys(obj).forEach(function(key) {
+	text = text + "<br>" + obj[key].id + ", " +
+obj[key].password + ", " +
+obj[key].name + ", " +
+obj[key].phoneNumber + ", " +
+obj[key].currentCity + ", " +
+obj[key].currentState + ", " +
+obj[key].currentCountry + ", " +
+obj[key].modeOfTransport;
+
+
+});
+document.getElementById("demo").innerHTML =text;
+
+</script>
+</body>
+</html>

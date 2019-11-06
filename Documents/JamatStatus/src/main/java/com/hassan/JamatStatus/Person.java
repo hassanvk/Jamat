@@ -4,7 +4,7 @@ import java.math.BigInteger;
 
 public class Person
 {
-    private int id;
+    private String id;
     private String password;
     private String name;
     private String phoneNumber;
@@ -13,7 +13,7 @@ public class Person
     private String currentCountry;
     private String modeOfTransport;
 
-    public Person(int id, String password, String name, String phoneNumber, String currentCity, String currentState, String currentCountry, String modeOfTransport) {
+    public Person(String id, String password, String name, String phoneNumber, String currentCity, String currentState, String currentCountry, String modeOfTransport) {
         this.id = id;
         this.password = password;
         this.name = name;
@@ -32,7 +32,7 @@ public class Person
                 this.name,this.phoneNumber,this.currentCity,this.currentState,this.currentCountry,this.modeOfTransport);
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
